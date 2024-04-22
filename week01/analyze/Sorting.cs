@@ -14,4 +14,7 @@
             }
         }
     }
+
 }
+
+// The time complexity of the SortArray function is O(n^2), indicating quadratic

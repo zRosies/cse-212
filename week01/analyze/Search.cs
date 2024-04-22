@@ -43,6 +43,8 @@ public static class Search {
         return count; // Didn't find it
     }
 
+    // The big O notation for the SearchSorted2 function is O(n)
+
     /// <summary>
     /// Search for 'target' in the list 'data'. When its found (or not found) the variable count which represents
     /// the work done in the function is returned.
@@ -63,3 +65,9 @@ public static class Search {
         return 1 + SearchSorted2(data, target, start, middle - 1);
     }
 }
+
+
+// The big O notation for the SearchSorted2 function is O(log n)
+
+
+// The SearchSorted2 function has the best performance in the worst case scenario.
