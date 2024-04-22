@@ -10,7 +10,7 @@ public static class Divisors {
     }
 
     /// <summary>
-    /// Create a list of all divisors for a number including 1
+    /// Create a list of all divisors for a divider including 1
     /// and excluding the number itself. Modulo will be used
     /// to test divisibility.
     /// </summary>
@@ -18,6 +18,17 @@ public static class Divisors {
     /// <returns>List of divisors</returns>
     private static List<int> FindDivisors(int number) {
         List<int> results = new List<int>();
+
+        for( int divider = 1; divider < number; divider++){
+
+            if( number % divider == 0 ){
+                results.Add(divider);
+            }
+
+        }
+
+        Console.WriteLine("aaaaaaaaa");
+        Console.WriteLine(results);
         // Todo problem 1
         return results;
     }
