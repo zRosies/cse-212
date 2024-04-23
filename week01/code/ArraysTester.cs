@@ -56,6 +56,7 @@ public static class ArraysTester {
               
                 // double newNumber = number * index;
                 // multiples.Add(newNumber);
+                
                 // Here I am just simplifying the the process above /\
                 multiples.Add(number*index);
                 
