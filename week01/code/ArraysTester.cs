@@ -39,7 +39,30 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+
+        // ---------------------------------------------  Plan  -----------------------------------------------------------------
+        // 1. Set an array of doubles
+        // 2. Interate through the input length in a loop, and multiply the input number by the index adding it in the new array until the loop is complete
+        // 3. Return the new array of doubles
+        //-----------------------------------------------------------------------------------------------------------------------
+
+        // 1-  Declaring the new array containing only the multiple numbers
+        List<double> multiples = new List<double>(); 
+       
+        // The loop will loop until it reaches the maximum number of multiples (length)
+        // The index will increment one by one until it reaches the input length
+        for(int index =1; index <= length; index++){
+                // 2- Multiplying the index by the input number until the loop is complete.
+              
+                // double newNumber = number * index;
+                // multiples.Add(newNumber);
+                // Here I am just simplifying the the process above /\
+                multiples.Add(number*index);
+                
+        }
+
+        // 3- Return the new array
+        return multiples.ToArray(); 
     }
     
     /// <summary>
@@ -56,6 +79,42 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        
+
+     
+
+        // -----------------------------------------  Plan  -------------------------------------------------
+        // 1. Slice the first array with the specified amount.
+        // 2. Slice the second array to get the remaining values.
+        // 4. Clear the initial array.
+        // 5. Add the first sliced array to the array cleared.
+        // 6. Add the second sliced array to the array cleared.
+        //------------------------------------------- -------------------------------------------------
+
+        // Here I slice the first array getting the part that will be rotated to the left
+        // If data us <List>{9, 1, 2, 3, 4, 5, 6, 7, 8}
+        // Slice array will equal to <List>{9}
+
+        List<int> slicedArray = data.Slice(data.Count - amount, amount);
+
+        
+        // Here I slice the first array getting the part that will be rotated to the right
+        // If data us <List>{9, 1, 2, 3, 4, 5, 6, 7, 8}
+        // Slice array will equal to  <List>{ 1, 2, 3, 4, 5, 6, 7, 8}
+        List<int> remainingArray = data.Slice(0, data.Count- amount);
+
+
+        // Since the function returns void, we need to update the current array instead of returning a new one.
+        // Here I clear the initial array
+        data.Clear();
+        // Here I add the first part to the new array that will be placed on the left
+        // <List>{9}
+        data.AddRange(slicedArray);
+        // Here I add the second part to the new array that will be placed  on the right
+        // <List>{ 1, 2, 3, 4, 5, 6, 7, 8}
+        data.AddRange(remainingArray);
+
+        // The updated data will be <List>{9,1, 2, 3, 4, 5, 6, 7, 8}
 
     }
 }
