@@ -89,4 +89,4 @@ public static class StandardDeviation {
 // 7 - O(log n) 
 // 8 - O(n) 
 // 9 - O(log n) 
-// 10 - SearchSorted2
+// 10 - SearchSorted    2

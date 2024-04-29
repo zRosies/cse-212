@@ -11,22 +11,52 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
         Console.WriteLine("Test 1");
+        // var cs = new CustomerService(5);
+        // Console.WriteLine(cs);
+        // cs.AddNewCustomer();
+        // cs.ServeCustomer();
 
-        // Defect(s) Found: 
+        // Scenario: 
+        // Expected Result: User
+        // Defect(s) Found: The terminal was trying to print the customer after it was erased from the array.
 
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Testing if the error messages will display if the the queue is full 
+        // Expected Result: An error should prompt because the queue is full.
         Console.WriteLine("Test 2");
+        // var cs1 = new CustomerService(2);
+        // Console.WriteLine(cs1);
+        // cs1.AddNewCustomer();
+        // cs1.AddNewCustomer();
+        // cs1.AddNewCustomer();
+        // cs1.ServeCustomer();
+        // cs1.ServeCustomer();
+        // cs1.ServeCustomer();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: An error is found because the queue size is bigger than its instantiation.
+
+        // Test 3
+        // Scenario: Queueing and unqueueing customers orders to see if the program works as the expected and no error is prompted.
+        // Expected Result: The list shoudn't be full of orders and teh program shall work as expected.
+
+        Console.WriteLine("Test 3");
+        var cs3 = new CustomerService(2);
+        Console.WriteLine(cs3);
+        cs3.AddNewCustomer();
+        cs3.AddNewCustomer();
+        cs3.ServeCustomer();
+        cs3.AddNewCustomer();
+        cs3.ServeCustomer();
+        cs3.ServeCustomer();
+        cs3.ServeCustomer();
+
 
         Console.WriteLine("=================");
+
+        // Program working as expected
 
         // Add more Test Cases As Needed Below
     }
@@ -35,10 +65,14 @@ public class CustomerService {
     private readonly int _maxSize;
 
     public CustomerService(int maxSize) {
-        if (maxSize <= 0)
+        if (maxSize <= 0){
+
             _maxSize = 10;
-        else
-            _maxSize = maxSize;
+        }
+        else{
+            // Readjusting the query parameters according to the index of the array.
+            _maxSize = maxSize -1;
+        }
     }
 
     /// <summary>
@@ -72,6 +106,8 @@ public class CustomerService {
             return;
         }
 
+        // Console.WriteLine(_queue.Count);
+
         Console.Write("Customer Name: ");
         var name = Console.ReadLine()!.Trim();
         Console.Write("Account Id: ");
@@ -81,16 +117,23 @@ public class CustomerService {
 
         // Create the customer object and add it to the queue
         var customer = new Customer(name, accountId, problem);
-        _queue.Add(customer);
+       _queue.Add(customer);
+
+        // _queue.Add(customer);
     }
 
     /// <summary>
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
-        _queue.RemoveAt(0);
+        if(_queue.Count == 0 || _queue[0]== null){
+            Console.WriteLine("Attempting to serve a customer when the queue is empty");
+            return;
+        }
         var customer = _queue[0];
+        _queue.RemoveAt(0);
         Console.WriteLine(customer);
+        Console.WriteLine("Order delivered successfully");
     }
 
     /// <summary>
