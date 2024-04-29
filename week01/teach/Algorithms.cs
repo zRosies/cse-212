@@ -77,3 +77,13 @@ public static class Algorithms {
         return count;
     }
 }
+
+
+// ----------------------------- Faster Performance --------------------------------
+// 1 - O(1) - Constant time complexity. This complexity means that the algorithm's runtime does not depend on the size of the input, making it the most efficient.
+// 2- O(log n) - Logarithmic time complexity. The runtime grows logarithmically with the size of the input, making it very efficient, especially as n becomes large.
+// 3- O(n) - Linear time complexity. The runtime increases linearly with the size of the input, making it less efficient than constant or logarithmic time complexities, but still reasonable for large inputs.
+// 4- O(n log n) - Linearithmic time complexity. This complexity often occurs in efficient sorting algorithms like Merge Sort and Quick Sort. It's more efficient than quadratic time complexity but less efficient than linear or logarithmic complexities.
+// 5- O(n^2) - Quadratic time complexity. The runtime grows quadratically with the size of the input, making it less efficient than linear and linearithmic complexities, especially for large inputs.
+// 6- O(2^n) - Exponential time complexity. This complexity indicates an algorithm that grows very rapidly with the size of the input. It's the least efficient among the given complexities when n is large.
+// ----------------------------- Lowest Performance ---------------------------------
