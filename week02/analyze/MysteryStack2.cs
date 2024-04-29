@@ -30,6 +30,9 @@
                 }
 
                 stack.Push(res);
+                // Console.WriteLine(stack);
+                // [5,3,7,10] pop
+                // [5,10]
             }
             else if (IsFloat(item)) {
                 stack.Push(float.Parse(item));
