@@ -5,18 +5,20 @@
         var priorityQueue = new PriorityQueue();
 
         // Test Cases
+   
+
+        // Test 1
+        // Scenario: Trying to dequeue when a queue is empty.
+        // Expected Result: Error message should be displayed
+        Console.WriteLine("Test 1");
         priorityQueue.Enqueue("Rice", 1);
         priorityQueue.Enqueue("Emergency", 3);
         priorityQueue.Enqueue("Dice", 2);
         priorityQueue.Dequeue();
         priorityQueue.Dequeue();
         priorityQueue.Dequeue();
-        Console.WriteLine(priorityQueue);
-
-        // Test 1
-        // Scenario: 
-        // Expected Result: 
-        Console.WriteLine("Test 1");
+        priorityQueue.Dequeue();
+        Console.WriteLine(  priorityQueue.Dequeue());
 
         // Defect(s) Found: 
 
