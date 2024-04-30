@@ -16,7 +16,7 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: The Enque method were adding the person to the queue incorrectly.
+        // Defect(s) Found: The Enqueue method were adding the person to the queue incorrectly using the Insert instead of Add.
 
         Console.WriteLine("---------");
 
