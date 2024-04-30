@@ -9,15 +9,18 @@
         // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
         Console.WriteLine("Test 1");
         var players = new TakingTurnsQueue();
-        players.AddPerson("Bob", 2);
+        players.AddPerson("Bob", 2); 
         players.AddPerson("Tim", 5);
         players.AddPerson("Sue", 3);
+        // players.AddPerson("Gustavo", 7);
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: The Enque method were adding the person to the queue incorrectly.
 
         Console.WriteLine("---------");
+
+
 
         // Test 2
         // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
@@ -38,7 +41,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: No deffects found , program working correctly.
 
         Console.WriteLine("---------");
 
@@ -56,7 +59,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: The person that has 0 turns are not added to queue
 
         Console.WriteLine("---------");
 
@@ -71,9 +74,11 @@
         // Console.WriteLine(players);
         for (int i = 0; i < 10; i++) {
             players.GetNextPerson();
+            }
             // Console.WriteLine(players);
-        }
-        // Defect(s) Found: 
+        // }
+        // Defect(s) Found: Tim was not infinite because inifite are people who have 0 turns.
+        // Added logic to run infite when a number is also negative.
 
         Console.WriteLine("---------");
 
@@ -83,6 +88,7 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
-    }
+        // Defect(s) Found: Error message is displayed correctly.
+        }
+    
 }

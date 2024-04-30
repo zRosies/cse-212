@@ -20,7 +20,11 @@ public class TakingTurnsQueue {
     public void AddPerson(string name, int turns) {
         var person = new Person(name, turns);
         _people.Enqueue(person);
+        // Console.WriteLine(_people);
     }
+
+
+
 
     /// <summary>
     /// Get the next person in the queue and display them.  The person should
@@ -29,6 +33,8 @@ public class TakingTurnsQueue {
     /// person has an infinite number of turns.  An error message is displayed 
     /// if the queue is empty.
     /// </summary>
+    /// 
+    // [(bob,2),(tim,5), (sue,3)]
     public void GetNextPerson() {
         if (_people.IsEmpty())
             Console.WriteLine("No one in the queue.");
@@ -38,8 +44,15 @@ public class TakingTurnsQueue {
                 person.Turns -= 1;
                 _people.Enqueue(person);
             }
+            else if(person.Turns <= 0) {
+                //Adding a person with 'inifinity turns' 0 to the list
+                _people.Enqueue(person);
+            }
+        
+     
 
             Console.WriteLine(person.Name);
+            // Console.WriteLine(_people);
         }
     }
 
