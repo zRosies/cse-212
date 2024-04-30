@@ -3,9 +3,15 @@
         // TODO Problem 2 - Write and run test cases and fix the code to match requirements
         // Example of creating and using the priority queue
         var priorityQueue = new PriorityQueue();
-        Console.WriteLine(priorityQueue);
 
         // Test Cases
+        priorityQueue.Enqueue("Rice", 1);
+        priorityQueue.Enqueue("Emergency", 3);
+        priorityQueue.Enqueue("Dice", 2);
+        priorityQueue.Dequeue();
+        priorityQueue.Dequeue();
+        priorityQueue.Dequeue();
+        Console.WriteLine(priorityQueue);
 
         // Test 1
         // Scenario: 
