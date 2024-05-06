@@ -1,7 +1,10 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 public static class SetsAndMapsTester {
     public static void Run() {
+
+        //  Completed successfully.
         // Problem 1: Find Pairs with Sets
         Console.WriteLine("\n=========== Finding Pairs TESTS ===========");
         DisplayPairs(new[] { "am", "at", "ma", "if", "fi" });
@@ -27,9 +30,10 @@ public static class SetsAndMapsTester {
         // 31 & 13
 
         // Problem 2: Degree Summary
+        // Completed Successfully.
         // Sample Test Cases (may not be comprehensive) 
         Console.WriteLine("\n=========== Census TESTS ===========");
-        Console.WriteLine(string.Join(", ", SummarizeDegrees("census.txt")));
+        Console.WriteLine(string.Join("\n", SummarizeDegrees("census.txt")));
         // Results may be in a different order:
         // <Dictionary>{[Bachelors, 5355], [HS-grad, 10501], [11th, 1175],
         // [Masters, 1723], [9th, 514], [Some-college, 7291], [Assoc-acdm, 1067],
@@ -50,7 +54,8 @@ public static class SetsAndMapsTester {
         Console.WriteLine(IsAnagram("Eleven plus Two", "Twelve Plus One")); // true
         Console.WriteLine(IsAnagram("Eleven plus One", "Twelve Plus One")); // false
 
-        // Problem 4: Maze
+        // // Problem 4: Maze
+        // Completed Successfully (The one I liked most).
         Console.WriteLine("\n=========== Maze TESTS ===========");
         Dictionary<ValueTuple<int, int>, bool[]> map = SetupMazeMap();
         var maze = new Maze(map);
@@ -76,6 +81,7 @@ public static class SetsAndMapsTester {
         maze.ShowStatus(); // Should be at (6,6)
 
         // Problem 5: Earthquake
+        // Completed Successfully.
         // Sample Test Cases (may not be comprehensive) 
         Console.WriteLine("\n=========== Earthquake TESTS ===========");
         EarthquakeDailySummary();
@@ -107,9 +113,23 @@ public static class SetsAndMapsTester {
     /// that there were no duplicates) and therefore should not be displayed.
     /// </summary>
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
+
+
+    // Easy one :D
     private static void DisplayPairs(string[] words) {
-        // To display the pair correctly use something like:
-        // Console.WriteLine($"{word} & {pair}");
+        var reversedWord = new HashSet<string>();
+
+        foreach (var word in words) {
+            var pair = new string(word.Reverse().ToArray());
+            // Console.WriteLine(pair);
+            if (reversedWord.Contains(pair)) {
+                Console.WriteLine($"{word} & {pair}");
+            }
+            else{
+                reversedWord.Add(word);
+            }
+           
+        }
         // Each pair of words should displayed on its own line.
     }
 
@@ -127,10 +147,26 @@ public static class SetsAndMapsTester {
     /// #############
     /// # Problem 2 #
     /// #############
+    /// 
+
+
+    // The problem 2 lacks more details but it is completed.
     private static Dictionary<string, int> SummarizeDegrees(string filename) {
+
+        
         var degrees = new Dictionary<string, int>();
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
+            var degree = fields[3];
+            // var points = fields[4];
+            // The value is the number of key lines repeated in the file.
+            if(degrees.ContainsKey(degree)){
+                degrees[degree] += 1;
+
+            }else{
+                degrees.Add(degree, 1);
+            }
+
             // Todo Problem 2 - ADD YOUR CODE HERE
         }
 
@@ -156,16 +192,38 @@ public static class SetsAndMapsTester {
     /// #############
     /// # Problem 3 #
     /// #############
-    private static bool IsAnagram(string word1, string word2) {
-        // Todo Problem 3 - ADD YOUR CODE HERE
+    //   Finding the result using O(1) was a hard task for me.
+     private static bool IsAnagram(string word1, string word2) {
+    // Remove whitespaces and convert to lowercase
+    string word1_trimmed = Regex.Replace(word1, @"\s+", "").ToLower();
+    string word2_trimmed = Regex.Replace(word2, @"\s+", "").ToLower();
+    // Checking the anagram legnth
+    if (word1_trimmed.Length != word2_trimmed.Length) {
         return false;
     }
+
+    // Construct the set using characters of word1_trimmed 
+    var hashedWords = new List<char>(word1_trimmed);
+
+    foreach (char letter in word2_trimmed) {
+        if (hashedWords.Contains(letter)) {
+            hashedWords.Remove(letter);
+        } else {
+            // If a character in word2 is not found in word1, return false
+            return false; 
+        }
+    }
+    // If all characters in word2 are found in word1, return true
+    return true; 
+}
 
     /// <summary>
     /// Sets up the maze dictionary for problem 4
     /// </summary>
     private static Dictionary<ValueTuple<int, int>, bool[]> SetupMazeMap() {
         Dictionary<ValueTuple<int, int>, bool[]> map = new() {
+
+                            //left  //Right //Up  //Down
             { (1, 1), new[] { false, true, false, true } },
             { (1, 2), new[] { false, true, true, false } },
             { (1, 3), new[] { false, false, false, false } },
@@ -220,6 +278,9 @@ public static class SetsAndMapsTester {
     /// https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
     /// 
     /// </summary>
+    
+
+    // Bonus completed
     private static void EarthquakeDailySummary() {
         const string uri = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
         using var client = new HttpClient();
@@ -230,6 +291,15 @@ public static class SetsAndMapsTester {
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
+        
+        Console.WriteLine(featureCollection.id);
+
+
+        foreach(var city in featureCollection.Features){
+        //    var properties = features.Properties;
+
+            Console.WriteLine($"Place: {city.Properties.Place} - Magnitude: {city.Properties.Mag} ");
+        }
 
         // TODO:
         // 1. Add code in FeatureCollection.cs to describe the JSON using classes and properties 

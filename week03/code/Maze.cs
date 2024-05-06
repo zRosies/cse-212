@@ -16,12 +16,31 @@
 /// </summary>
 public class Maze {
     private readonly Dictionary<ValueTuple<int, int>, bool[]> _mazeMap;
+    // private Array[] position;
+
     private int _currX = 1;
     private int _currY = 1;
 
     public Maze(Dictionary<ValueTuple<int, int>, bool[]> mazeMap) {
         _mazeMap = mazeMap;
+    
     }
+    
+    //       The positions goes like this:
+    //       //left     //Right   //Up        //Down
+    //       false      true      false       true 
+    //        
+    // ----------------------- Mock here ----------------------
+    //         { (1, 1), new[] { false, true, false, true } },
+    //         { (1, 2), new[] { false, true, true, false } },
+    //         { (1, 3), new[] { false, false, false, false } },
+    //         { (1, 4), new[] { false, true, false, true } },
+    //         { (1, 5), new[] { false, false, true, true } },
+    //         { (1, 6), new[] { false, false, true, false } },
+    //         { (2, 1), new[] { true, false, false, true } },
+    //         { (2, 2), new[] { true, false, true, true } },
+    //         { (2, 3), new[] { false, false, true, true } },
+    // --------------------------------------------------------  
 
     // Todo Maze Problem - ADD YOUR CODE HERE
     /// <summary>
@@ -30,6 +49,15 @@ public class Maze {
     /// </summary>
     public void MoveLeft() {
         // FILL IN CODE
+        var position = _mazeMap[(_currX, _currY)].ToArray();
+            //   Console.WriteLine($"Position: [{string.Join(", ", position)}]");
+
+        if (position[0]) {
+            _currX--;
+              Console.WriteLine("Moved Left.");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -37,7 +65,15 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveRight() {
+        var position = _mazeMap[(_currX, _currY)].ToArray();
         // FILL IN CODE
+
+        if (position[1]) {
+            _currX++;
+            Console.WriteLine("Moved right.");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -45,7 +81,19 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveUp() {
-        // FILL IN CODE
+        var position = _mazeMap[(_currX, _currY)].ToArray();
+
+            // Console.WriteLine($"Position: [{string.Join(", ", position)}]");
+        
+        if (position[2]) {
+            _currY--;
+            Console.WriteLine("Moved Up.");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
+
+        // Console.WriteLine(position);
+        // Console.WriteLine($"Position: [{string.Join(", ", position)}]");
     }
 
     /// <summary>
@@ -53,7 +101,14 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveDown() {
+        var position = _mazeMap[(_currX, _currY)].ToArray();
         // FILL IN CODE
+        if (position[3]) {
+            _currY++;
+              Console.WriteLine("Moved Down.");
+        } else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     public void ShowStatus() {
