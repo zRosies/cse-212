@@ -27,10 +27,22 @@ public class Basketball
             var fields = reader.ReadFields()!;
             var playerId = fields[0];
             var points = int.Parse(fields[8]);
+            if(players.ContainsKey(playerId)){
+                // Updating the points if the  player is duplicated here.
+                players[playerId] += points;
+                
+            }
+            else{
+                
+            players.Add(playerId, points);
+            }
         }
 
-        Console.WriteLine($"Players: {{{string.Join(", ", players)}}}");
+        var sortedPlayers = players.OrderByDescending(pair=>pair.Value).Take(10);
 
-        var topPlayers = new string[10];
+        Console.WriteLine($"Players: ");
+        Console.WriteLine($"{string.Join("\n", sortedPlayers)}");
+
+        // var topPlayers = new string[10];
     }
 }
