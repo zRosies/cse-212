@@ -193,7 +193,7 @@ public static class SetsAndMapsTester {
     /// # Problem 3 #
     /// #############
     //   Finding the result using O(1) was a hard task for me.
-     private static bool IsAnagram(string word1, string word2) {
+    private static bool IsAnagram(string word1, string word2) {
     // Remove whitespaces and convert to lowercase
     string word1_trimmed = Regex.Replace(word1, @"\s+", "").ToLower();
     string word2_trimmed = Regex.Replace(word2, @"\s+", "").ToLower();
@@ -292,13 +292,13 @@ public static class SetsAndMapsTester {
 
         var featureCollection = JsonSerializer.Deserialize<FeatureCollection>(json, options);
         
-        Console.WriteLine(featureCollection.id);
-
+   
+        Console.WriteLine(featureCollection.Id);
 
         foreach(var city in featureCollection.Features){
         //    var properties = features.Properties;
 
-            Console.WriteLine($"Place: {city.Properties.Place} - Magnitude: {city.Properties.Mag} ");
+            Console.WriteLine($"Place: {city.Properties.Place} - Magnitude: {city.Properties.Mag}");
         }
 
         // TODO:
