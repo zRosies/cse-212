@@ -10,7 +10,6 @@ public static class LinkedListTester {
         ll.InsertHead(3);
         ll.InsertHead(4);
         ll.InsertHead(5);
-
         Console.WriteLine(ll.ToString()); // <LinkedList>{5, 4, 3, 2, 2, 2, 1};
         ll.InsertTail(0);
         ll.InsertTail(-1);
