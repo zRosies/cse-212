@@ -28,7 +28,7 @@ public static class TreesTester {
 
         Console.WriteLine("\n=========== PROBLEM 3 TESTS ===========");
         foreach (var value in tree.Reverse()) {
-            Console.WriteLine(value); // 10, 7, 6, 5, 4, 3, 1
+            Console.Write(value); // 10, 7, 6, 5, 4, 3, 1
         }
 
         Console.WriteLine("\n=========== PROBLEM 4 TESTS ===========");

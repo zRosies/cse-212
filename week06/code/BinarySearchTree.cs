@@ -62,7 +62,13 @@ public class BinarySearchTree : IEnumerable<int> {
         var numbers = new List<int>();
         TraverseBackward(_root, numbers);
         foreach (var number in numbers) {
-            yield return number;
+            if(number !=numbers.Last()){
+
+                 yield return number +", " ;
+            }
+            else{
+                     yield return number;
+            }
         }
     }
 
